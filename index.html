@@ -164,13 +164,11 @@
         let ansPlace = "";
         let ansFood = "";
 
-        // Chuyển bước
         function nextStep(current, next) {
             document.getElementById('step' + current).classList.remove('active');
             document.getElementById('step' + next).classList.add('active');
         }
 
-        // Chọn thời gian
         function selectTime(time) {
             ansTime = time;
             document.getElementById('step2').classList.remove('active');
@@ -181,7 +179,6 @@
             }
         }
 
-        // Chọn địa điểm
         function selectPlace(place) {
             ansPlace = place;
             if (ansTime === 'Sáng' || ansTime === 'Trưa') {
@@ -192,40 +189,24 @@
             document.getElementById('step4').classList.add('active');
         }
 
-        // Chọn món ăn
         function selectFood(food) {
             ansFood = food;
             document.getElementById('step4').classList.remove('active');
             document.getElementById('step5').classList.add('active');
         }
 
-        // Hiệu ứng nút Không nhảy lung tung
         function moveNoButton() {
             const btn = document.getElementById('btnNo');
             const container = document.querySelector('.container');
-            
-            const containerWidth = container.offsetWidth;
-            const containerHeight = container.offsetHeight;
-            const btnWidth = btn.offsetWidth;
-            const btnHeight = btn.offsetHeight;
-
-            const randomX = Math.floor(Math.random() * (containerWidth - btnWidth - 40));
-            const randomY = Math.floor(Math.random() * (containerHeight - btnHeight - 40)) - (containerHeight/2) + 50;
-
+            const randomX = Math.floor(Math.random() * (container.offsetWidth - btn.offsetWidth - 40));
+            const randomY = Math.floor(Math.random() * (container.offsetHeight - btn.offsetHeight - 40)) - (container.offsetHeight/2) + 50;
             btn.style.position = 'absolute';
             btn.style.left = randomX + 'px';
-            btn.style.top = (containerHeight / 2 + randomY) + 'px';
+            btn.style.top = (container.offsetHeight / 2 + randomY) + 'px';
         }
 
-        // --- HÀM GỬI THẲNG VỀ GMAIL ---
         function finishAndSubmit() {
-            // CẬU HÃY XÓA CHỮ THAY_MÃ_CỦA_CẬU_VÀO_ĐÂY VÀ DÁN MÃ ACCESS KEY CỦA CẬU VÀO GIỮA 2 DẤU NGOẶC KÉP:
             const ACCESS_KEY = "201418a5-79a1-4bef-901e-7a32ce6d4080";
-
-            if (ACCESS_KEY === "201418a5-79a1-4bef-901e-7a32ce6d4080") {
-                alert("Cậu quên dán mã Access Key vào code kìa!");
-                return;
-            }
 
             const btnSubmit = document.querySelector('#step5 .btn');
             btnSubmit.innerHTML = "Đang gửi tín hiệu... 💌";
