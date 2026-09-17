@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đi chơi với tớ nhaaa 💕</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap');
+        
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #ffe6e6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(255, 105, 135, 0.2);
+            max-width: 400px;
+            width: 90%;
+            position: relative;
+        }
+
+        h1 {
+            color: #ff4d6d;
+            font-size: 24px;
+            margin-bottom: 25px;
+        }
+
+        .step {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .step.active {
+            display: block;
+        }
+
+        .btn {
+            background-color: #ff758f;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            margin: 8px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+            width: 80%;
+        }
+
+        .btn:hover {
+            background-color: #ff4d6d;
+            transform: scale(1.05);
+        }
+
+        .btn-outline {
+            background-color: white;
+            color: #ff758f;
+            border: 2px solid #ff758f;
+        }
+
+        .btn-outline:hover {
+            background-color: #ff758f;
+            color: white;
+        }
+
+        #btnNo {
+            position: relative;
+            background-color: #ccc;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .gif-img {
+            max-width: 150px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Câu 1 -->
+        <div id="step1" class="step active">
+            <img class="gif-img" src="https://media.tenor.com/ef30sBumZzIAAAAi/tkthao219-capoo.gif" alt="Cute gif">
+            <h1>Đi chơi với tớ hăm, ngày 25/9 🥺?</h1>
+            <button class="btn" onclick="nextStep(1, 2)">Đi chớ 🥰</button>
+            <button class="btn" id="btnNo" onmouseover="moveNoButton()" onclick="moveNoButton()">Hong bé ơi 😝</button>
+        </div>
+
+        <!-- Câu 2 -->
+        <div id="step2" class="step">
+            <img class="gif-img" src="https://media.tenor.com/bCFAz5lM1TMAAAAi/tkthao219-capoo.gif" alt="Cute gif">
+            <h1>Đi vào thời điểm nào nè:</h1>
+            <button class="btn btn-outline" onclick="selectTime('Sáng')">Sáng</button>
+            <button class="btn btn-outline" onclick="selectTime('Trưa')">Trưa</button>
+            <button class="btn btn-outline" onclick="selectTime('Tối')">Tối</button>
+        </div>
+
+        <!-- Câu 3 (Sáng/Trưa) -->
+        <div id="step3_day" class="step">
+            <img class="gif-img" src="https://media.tenor.com/8390L4yViyQAAAAi/tkthao219-capoo.gif" alt="Cute gif">
+            <h1>Hôm nay đi đâu ta?:</h1>
+            <button class="btn btn-outline" onclick="selectPlace('Dinh Độc Lập')">Dinh Độc Lập</button>
+            <button class="btn btn-outline" onclick="selectPlace('Workshop nghệ thuật')">Workshop nghệ thuật</button>
+            <button class="btn btn-outline" onclick="selectPlace('Chụp Photobooth')">Chụp Photobooth</button>
+            <button class="btn btn-outline" onclick="selectPlace('Bảo tàng Mỹ Thuật / TP')">Bảo tàng Mỹ Thuật / TP</button>
+            <button class="btn btn-outline" onclick="selectPlace('Study date 😈')">Study date 😈</button>
+        </div>
+
+        <!-- Câu 3 (Tối) -->
+        <div id="step3_night" class="step">
+            <img class="gif-img" src="https://media.tenor.com/8390L4yViyQAAAAi/tkthao219-capoo.gif" alt="Cute gif">
+            <h1>Hôm nay đi đâu ta?:</h1>
+            <button class="btn btn-outline" onclick="selectPlace('Phố lồng đèn')">Đi phố lồng đèn</button>
+            <button class="btn btn-outline" onclick="selectPlace('Đi Mall')">Đi Mall (dạo dạo sắm đồ)</button>
+            <button class="btn btn-outline" onclick="selectPlace('Waterbus')">Đi Waterbus ngắm cảnh</button>
+            <button class="btn btn-outline" onclick="selectPlace('Study date 😈')">Study date 😈</button>
+        </div>
+
+        <!-- Câu 4 -->
+        <div id="step4" class="step">
+            <img class="gif-img" src="https://media.tenor.com/XqTj96q7G5cAAAAi/tkthao219-capoo.gif" alt="Cute gif">
+            <h1>Cậu muốn ăn gì nèeee?:</h1>
+            <button class="btn btn-outline" onclick="selectFood('Sukiyaaaaa')">Ăn Sukiyaaaaa</button>
+            <button class="btn btn-outline" onclick="selectFood('Lẩu áu áu')">Ăn lẩu áu áu</button>
+            <button class="btn btn-outline" onclick="selectFood('Dimsum MeiLi')">Ăn Dimsum MeiLi 🥟</button>
+            <button class="btn btn-outline" onclick="selectFood('Đồ nướng')">Ăn đồ nướng neeee</button>
+        </div>
+
+        <!-- Câu 5 -->
+        <div id="step5" class="step">
+            <img class="gif-img" src="https://media.tenor.com/H4qU7qFh_bEAAAAi/tkthao219-capoo.gif" alt="Cute gif">
+            <h1>Cậu chắc chưa nàaaa :3?</h1>
+            <button class="btn" onclick="finishAndSubmit()">Chắc chắn rùii, Chốt đơn! 😍</button>
+            <button class="btn btn-outline" onclick="location.reload()">Từ từ cho tớ chọn lại nha</button>
+        </div>
+
+        <!-- Câu 6 (Hoàn thành) -->
+        <div id="step6" class="step">
+            <img class="gif-img" src="https://media.tenor.com/R3aGZkU-V34AAAAi/tkthao219-capoo.gif" alt="Cute gif">
+            <h1>Xong rùi! ❤️</h1>
+            <p style="color: #ff4d6d; font-weight: 700; margin-bottom: 20px;">Tớ đã nhận được tín hiệu bay thẳng vào Gmail! Đợi tớ qua đón nhaaa! 🛵💨</p>
+            <p>-hết-</p>
+        </div>
+    </div>
+
+    <script>
+        let ansTime = "";
+        let ansPlace = "";
+        let ansFood = "";
+
+        // Chuyển bước
+        function nextStep(current, next) {
+            document.getElementById('step' + current).classList.remove('active');
+            document.getElementById('step' + next).classList.add('active');
+        }
+
+        // Chọn thời gian
+        function selectTime(time) {
+            ansTime = time;
+            document.getElementById('step2').classList.remove('active');
+            if (time === 'Sáng' || time === 'Trưa') {
+                document.getElementById('step3_day').classList.add('active');
+            } else {
+                document.getElementById('step3_night').classList.add('active');
+            }
+        }
+
+        // Chọn địa điểm
+        function selectPlace(place) {
+            ansPlace = place;
+            if (ansTime === 'Sáng' || ansTime === 'Trưa') {
+                document.getElementById('step3_day').classList.remove('active');
+            } else {
+                document.getElementById('step3_night').classList.remove('active');
+            }
+            document.getElementById('step4').classList.add('active');
+        }
+
+        // Chọn món ăn
+        function selectFood(food) {
+            ansFood = food;
+            document.getElementById('step4').classList.remove('active');
+            document.getElementById('step5').classList.add('active');
+        }
+
+        // Hiệu ứng nút Không nhảy lung tung
+        function moveNoButton() {
+            const btn = document.getElementById('btnNo');
+            const container = document.querySelector('.container');
+            
+            const containerWidth = container.offsetWidth;
+            const containerHeight = container.offsetHeight;
+            const btnWidth = btn.offsetWidth;
+            const btnHeight = btn.offsetHeight;
+
+            const randomX = Math.floor(Math.random() * (containerWidth - btnWidth - 40));
+            const randomY = Math.floor(Math.random() * (containerHeight - btnHeight - 40)) - (containerHeight/2) + 50;
+
+            btn.style.position = 'absolute';
+            btn.style.left = randomX + 'px';
+            btn.style.top = (containerHeight / 2 + randomY) + 'px';
+        }
+
+        // --- HÀM GỬI THẲNG VỀ GMAIL ---
+        function finishAndSubmit() {
+            // CẬU HÃY XÓA CHỮ THAY_MÃ_CỦA_CẬU_VÀO_ĐÂY VÀ DÁN MÃ ACCESS KEY CỦA CẬU VÀO GIỮA 2 DẤU NGOẶC KÉP:
+            const ACCESS_KEY = "THAY_MÃ_CỦA_CẬU_VÀO_ĐÂY";
+
+            if (ACCESS_KEY === "THAY_MÃ_CỦA_CẬU_VÀO_ĐÂY") {
+                alert("Cậu quên dán mã Access Key vào code kìa!");
+                return;
+            }
+
+            const btnSubmit = document.querySelector('#step5 .btn');
+            btnSubmit.innerHTML = "Đang gửi tín hiệu... 💌";
+            btnSubmit.disabled = true;
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    access_key: ACCESS_KEY,
+                    subject: "💌 Tín hiệu chốt đơn Date 25/9 từ người yêu!",
+                    "Thời gian": ansTime,
+                    "Địa điểm": ansPlace,
+                    "Món ăn": ansFood,
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    document.getElementById('step5').classList.remove('active');
+                    document.getElementById('step6').classList.add('active');
+                } else {
+                    alert("Úi, gửi thất bại rồi. Cậu thử lại nhé!");
+                    btnSubmit.innerHTML = "Chắc chắn rùii, Chốt đơn! 😍";
+                    btnSubmit.disabled = false;
+                }
+            })
+            .catch(error => {
+                alert("Úi, có lỗi mạng. Cậu kiểm tra wifi nhé!");
+                btnSubmit.innerHTML = "Chắc chắn rùii, Chốt đơn! 😍";
+                btnSubmit.disabled = false;
+            });
+        }
+    </script>
+</body>
+</html>
